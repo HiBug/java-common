@@ -1,0 +1,22 @@
+# Created by https://www.gitignore.io/api/intellij
+
+### Intellij ###
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio
+
+/target
+/bin
+/.settings
+.classpath
+target
+build
+.idea
+*.iml
+*.class
+*.log
+/.idea
+
+.project
+
+.DS_Store
+
+
