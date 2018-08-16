@@ -1,11 +1,11 @@
 package com.xin.mock;
 
-import org.springframework.aop.framework.AdvisedSupport;
-import org.springframework.aop.framework.AopProxy;
-import org.springframework.aop.support.AopUtils;
-import org.springframework.test.util.ReflectionTestUtils;
+        import org.springframework.aop.framework.AdvisedSupport;
+        import org.springframework.aop.framework.AopProxy;
+        import org.springframework.aop.support.AopUtils;
+        import org.springframework.test.util.ReflectionTestUtils;
 
-import java.lang.reflect.Field;
+        import java.lang.reflect.Field;
 
 /**
  * @author Three
@@ -36,7 +36,7 @@ public class MockUtil {
         Field h = proxy.getClass().getDeclaredField("CGLIB$CALLBACK_0");
         h.setAccessible(true);
         Object dynamicAdvisedInterceptor = h.get(proxy);
-        Field advised = dynamicAdvisedInterceptor.getClass().getDeclaredField("advised");
+        Field  advised                   = dynamicAdvisedInterceptor.getClass().getDeclaredField("advised");
         advised.setAccessible(true);
         Object target = ((AdvisedSupport) advised.get(dynamicAdvisedInterceptor)).getTargetSource().getTarget();
         return target;
@@ -46,7 +46,7 @@ public class MockUtil {
         Field h = proxy.getClass().getSuperclass().getDeclaredField("h");
         h.setAccessible(true);
         AopProxy aopProxy = (AopProxy) h.get(proxy);
-        Field advised = aopProxy.getClass().getDeclaredField("advised");
+        Field    advised  = aopProxy.getClass().getDeclaredField("advised");
         advised.setAccessible(true);
         Object target = ((AdvisedSupport) advised.get(aopProxy)).getTargetSource().getTarget();
         return target;
