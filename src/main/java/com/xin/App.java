@@ -1,7 +1,8 @@
 package com.xin;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import java.math.BigDecimal;
 
 /**
  * Hello world!
@@ -9,7 +10,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class App {
     public static void main(String[] args) {
-        SpringApplication.run(App.class, args);
-        System.out.println("Hello World!");
+        System.out.println(new BigDecimal("3E-9").toPlainString());
     }
 }
