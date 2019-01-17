@@ -7,11 +7,18 @@ package com.xin.heap;
  *
  * </p>
  */
-public interface HeapObject {
+public interface HeapObject<T> {
     /**
      * 获取权重
      *
      * @return
      */
     int getScore();
+
+    /**
+     * 获取数据
+     *
+     * @return
+     */
+    T getData();
 }

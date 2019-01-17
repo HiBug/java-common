@@ -1,5 +1,7 @@
 package com.xin.heap;
 
+import com.alibaba.fastjson.JSON;
+
 import java.lang.reflect.Array;
 import java.util.Arrays;
 
@@ -51,29 +53,28 @@ public class MaxHeap<T extends HeapObject> implements Heap<T> {
         // 只判断自己和父节点
 
         // 定义临时位置为最后一个
-        int tempindex = size;
-
-        // 通过index来判断是否需要调换条件
-        while (tempindex != 0) {
-
-            // 计算父节点
-            int parentIndex = (tempindex - 1) >> 1;
-
-            // 如果比父节点大 则需要进行位置调换
-            if (heapContainer[tempindex].getScore() > heapContainer[parentIndex].getScore()) {
-                // 位置交换的算法
-                swap(tempindex, parentIndex);
-            } else {
-                break;
-            }
-
-            // 当前位置在父节点位置上  如果父节点位置还有父节点 再重新进行位置调整
-            tempindex = parentIndex;
-        }
-
+        compareWithParentAndSet(size);
         // 容量+1
         size++;
+    }
 
+    @Override
+    public void update(T data) {
+        int index = Integer.MIN_VALUE;
+        for (int i = 0; i < size; i++) {
+            if (heapContainer[i].getData().equals(data.getData())) {
+                index = i;
+                heapContainer[i] = data;
+                break;
+            }
+        }
+        if (index == Integer.MIN_VALUE) {
+            //不存在该元素则插入
+            insert(data);
+            return;
+        }
+        //存在则更改
+        compareWithParentAndSet(index);
     }
 
     /**
@@ -84,6 +85,25 @@ public class MaxHeap<T extends HeapObject> implements Heap<T> {
         if (size >= heapContainer.length) {
             // 进行扩容每次扩容 sDefaultLen 长
             heapContainer = Arrays.copyOf(heapContainer, heapContainer.length + sDefaultLen);
+        }
+    }
+
+    //与父节点比对并且交换
+    private void compareWithParentAndSet(int tempIndex) {
+        // 通过index来判断是否需要调换条件
+        while (tempIndex != 0) {
+            // 计算父节点
+            int parentIndex = (tempIndex - 1) >> 1;
+
+            // 如果比父节点大 则需要进行位置调换
+            if (heapContainer[tempIndex].getScore() > heapContainer[parentIndex].getScore()) {
+                // 位置交换的算法
+                swap(tempIndex, parentIndex);
+            } else {
+                break;
+            }
+            // 当前位置在父节点位置上  如果父节点位置还有父节点 再重新进行位置调整
+            tempIndex = parentIndex;
         }
     }
 
@@ -190,7 +210,7 @@ public class MaxHeap<T extends HeapObject> implements Heap<T> {
     @Override
     public void printArr() {
         for (int i = 0; i < size; i++) {
-            System.out.println(("MaxHeap:" + String.valueOf(heapContainer[i].getScore())));
+            System.out.println(("MaxHeap:" + JSON.toJSONString(heapContainer[i])));
         }
     }
 

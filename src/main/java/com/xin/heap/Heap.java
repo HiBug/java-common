@@ -10,9 +10,16 @@ package com.xin.heap;
 public interface Heap<T extends HeapObject> {
     /**
      * 插入数据
-     *
      */
     void insert(T data);
+
+    /**
+     * 更新数据score,
+     * 如果不存在则插入
+     *
+     * @param data
+     */
+    void update(T data);
 
 
     /**
