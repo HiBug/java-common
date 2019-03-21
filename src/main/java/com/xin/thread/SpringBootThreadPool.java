@@ -24,7 +24,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class SpringBootThreadPool {
     public static void main(String[] args) throws Exception {
         ApplicationContext context = SpringApplication.run(SpringBootThreadPool.class, args);
-        Task task = context.getBean(Task.class);
+        Task               task    = context.getBean(Task.class);
         task.task1();
         task.task2();
         task.task3();

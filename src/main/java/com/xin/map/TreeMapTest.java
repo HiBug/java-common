@@ -14,11 +14,11 @@ import java.util.TreeMap;
 public class TreeMapTest {
     public static void main(String[] args) {
         TreeMap<String, Integer> cityCnt = Maps.newTreeMap();
-        cityCnt.put("shanghai",30);
-        cityCnt.put("liaoCheng",2);
-        cityCnt.put("hefei",13);
-        cityCnt.put("chengdu",5);
-        cityCnt.put("beijing",20);
+        cityCnt.put("shanghai", 30);
+        cityCnt.put("liaoCheng", 2);
+        cityCnt.put("hefei", 13);
+        cityCnt.put("chengdu", 5);
+        cityCnt.put("beijing", 20);
 
         System.out.println(cityCnt.firstEntry());
 

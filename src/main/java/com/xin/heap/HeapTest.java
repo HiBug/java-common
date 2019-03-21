@@ -42,6 +42,16 @@ public class HeapTest {
 
         System.out.println("heap:");
         maxHeap.printArr();
+
+        a = DefaultObject.builder().score(5).data("f").build();
+
+        System.out.println("update:");
+        System.out.println(JSON.toJSONString(a));
+
+        maxHeap.update(a);
+
+        System.out.println("heap:");
+        maxHeap.printArr();
     }
 
 

@@ -17,7 +17,7 @@ import java.util.List;
 public class ApacheClient {
     public static void main(String[] args) throws Exception {
 
-        HttpPost post = new HttpPost("http://www.baidu.com");
+        HttpPost                 post   = new HttpPost("http://www.baidu.com");
         List<BasicNameValuePair> params = Lists.newArrayList();
         params.add(new BasicNameValuePair("api_key", "KwGoc7IkT3eSFnmFs6fwcQxI84tRKrXT"));//param
         post.addHeader("Connection", "keep-alive");//header
